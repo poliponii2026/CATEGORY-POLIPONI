@@ -95,6 +95,12 @@
       white-space:nowrap;
     }
 
+    /* SOLD OUT BADGE */
+    .badge.soldout{
+      background:#ffe3e3;
+      color:#ff2d2d;
+    }
+
     .divider{
       height:1px;
       background:#eceff5;
@@ -130,6 +136,19 @@
 
     .choose-btn:hover{
       transform:scale(1.03);
+    }
+
+    /* SOLD OUT BUTTON */
+    .choose-btn.soldout{
+      background:#c7c7c7;
+      color:#666;
+      cursor:not-allowed;
+      pointer-events:none;
+      box-shadow:none;
+    }
+
+    .choose-btn.soldout:hover{
+      transform:none;
     }
 
     /* QUANTITY */
@@ -264,7 +283,7 @@
     <!-- TICKET GRID -->
     <div class="ticket-grid">
 
-      <!-- CARD 1 -->
+      <!-- CARD 1 SOLD OUT -->
       <div class="ticket-card">
 
         <div class="ticket-top">
@@ -272,8 +291,8 @@
             TIKET 150 : Festival
           </div>
 
-          <div class="badge">
-            ON SALE
+          <div class="badge soldout">
+            SOLD OUT
           </div>
         </div>
 
@@ -285,15 +304,10 @@
             Rp. 325.000
           </div>
 
-          <button class="choose-btn" onclick="selectTicket(this, 325000)">
-            Pilih Tiket
+          <!-- BUTTON SOLD OUT -->
+          <button class="choose-btn soldout" disabled>
+            FULL BOOKED
           </button>
-
-          <div class="quantity-box">
-            <button class="qty-btn" onclick="changeQty(this, -1, 325000)">-</button>
-            <div class="qty-number">1</div>
-            <button class="qty-btn" onclick="changeQty(this, 1, 325000)">+</button>
-          </div>
 
         </div>
       </div>
