@@ -3,475 +3,568 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Poliponi Ticketing</title>
+  <title>POLIPONI 2026 - BALI</title>
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ICON -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
   <style>
+
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family:Arial, Helvetica, sans-serif;
+      scroll-behavior:smooth;
     }
 
     body{
-      background:#f5f7fb;
+      font-family:'Poppins',sans-serif;
+      background:#f5f5f5;
       color:#111;
-      padding-bottom:120px;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
     }
 
     .container{
       width:100%;
-      max-width:600px;
+      max-width:900px;
       margin:auto;
-      padding:18px;
+      background:white;
+      min-height:100vh;
+      padding-bottom:120px;
     }
 
-    /* HEADER */
-    .banner{
-      width:100%;
-      border-radius:24px;
-      overflow:hidden;
-      box-shadow:0 10px 25px rgba(0,0,0,0.08);
-      margin-bottom:28px;
-      background:#fff;
-    }
+    /* BANNER */
 
     .banner img{
       width:100%;
       display:block;
+      border-bottom-left-radius:30px;
+      border-bottom-right-radius:30px;
     }
 
     /* TITLE */
-    .section-title{
-      font-size:30px;
-      font-weight:700;
-      margin-bottom:18px;
-      color:#111827;
+
+    .main-title{
+      padding:30px 24px 10px;
+    }
+
+    .main-title h1{
+      font-size:36px;
+      font-weight:800;
+      line-height:1.2;
+      color:#111;
+    }
+
+    .main-title span{
+      color:#00b7ff;
+    }
+
+    section{
+      padding:20px;
     }
 
     /* CARD */
-    .ticket-grid{
-      display:grid;
-      gap:18px;
-    }
 
-    .ticket-card{
-      background:#fff;
+    .card{
+      background:white;
       border-radius:24px;
-      padding:22px;
-      box-shadow:
-      0 4px 10px rgba(0,0,0,0.04),
-      0 12px 30px rgba(0,0,0,0.05);
-      transition:0.25s ease;
-      border:1px solid #eef1f6;
+      padding:24px;
+      margin-bottom:20px;
+      border:1px solid #ececec;
+      box-shadow:0 10px 30px rgba(0,0,0,.05);
     }
 
-    .ticket-card:hover{
-      transform:translateY(-3px);
-    }
-
-    .ticket-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:15px;
-      margin-bottom:22px;
-    }
-
-    .ticket-name{
+    .section-title{
       font-size:22px;
       font-weight:700;
-      line-height:1.4;
-      color:#111827;
+      margin-bottom:20px;
+      color:#111;
     }
 
-    .badge{
-      background:#e8f0ff;
-      color:#356dff;
-      padding:8px 14px;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:700;
-      white-space:nowrap;
-    }
+    /* DETAIL */
 
-    /* SOLD OUT BADGE */
-    .badge.soldout{
-      background:#ffe3e3;
-      color:#ff2d2d;
-    }
-
-    .divider{
-      height:1px;
-      background:#eceff5;
-      margin-bottom:22px;
-    }
-
-    .ticket-bottom{
+    .detail-item{
       display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:15px;
-      flex-wrap:wrap;
+      gap:16px;
+      margin-bottom:20px;
+      align-items:flex-start;
     }
 
-    .price{
-      font-size:30px;
-      font-weight:800;
-      color:#111827;
-    }
-
-    .choose-btn{
-      border:none;
-      background:#356dff;
-      color:#fff;
-      padding:14px 24px;
+    .detail-item i{
+      width:48px;
+      height:48px;
+      background:#00c8ff;
+      color:white;
       border-radius:16px;
-      font-size:16px;
-      font-weight:700;
-      cursor:pointer;
-      transition:0.2s ease;
-      box-shadow:0 6px 18px rgba(53,109,255,0.25);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      flex-shrink:0;
     }
 
-    .choose-btn:hover{
-      transform:scale(1.03);
-    }
-
-    /* SOLD OUT BUTTON */
-    .choose-btn.soldout{
-      background:#c7c7c7;
+    .detail-item h4{
+      font-size:14px;
       color:#666;
-      cursor:not-allowed;
-      pointer-events:none;
-      box-shadow:none;
+      margin-bottom:4px;
     }
 
-    .choose-btn.soldout:hover{
-      transform:none;
+    .detail-item p{
+      font-size:17px;
+      font-weight:600;
+      color:#111;
     }
 
-    /* QUANTITY */
-    .quantity-box{
-      display:none;
+    /* ORGANIZER */
+
+    .organizer{
+      display:flex;
       align-items:center;
       gap:14px;
     }
 
-    .qty-btn{
-      width:42px;
-      height:42px;
-      border:none;
-      border-radius:14px;
-      background:#356dff;
-      color:#fff;
-      font-size:24px;
-      cursor:pointer;
-      transition:0.2s;
-    }
-
-    .qty-btn:hover{
-      transform:scale(1.05);
-    }
-
-    .qty-number{
-      min-width:24px;
-      text-align:center;
-      font-size:20px;
-      font-weight:700;
-    }
-
-    /* FOOTER BAR */
-    .checkout-bar{
-      position:fixed;
-      left:0;
-      right:0;
-      bottom:0;
-      background:#fff;
-      padding:18px;
-      box-shadow:0 -10px 30px rgba(0,0,0,0.08);
-      border-top-left-radius:24px;
-      border-top-right-radius:24px;
-    }
-
-    .checkout-content{
-      max-width:600px;
-      margin:auto;
+    .organizer-logo{
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      background:#00c8ff;
       display:flex;
-      justify-content:space-between;
       align-items:center;
-      gap:15px;
-    }
-
-    .checkout-text small{
-      display:block;
-      color:#6b7280;
-      margin-bottom:5px;
+      justify-content:center;
+      color:white;
+      font-weight:700;
       font-size:13px;
     }
 
-    .checkout-total{
-      font-size:28px;
-      font-weight:800;
-      color:#111827;
+    /* SOCIAL */
+
+    .socials{
+      display:flex;
+      gap:16px;
+      margin-top:10px;
     }
 
-    .buy-btn{
-      border:none;
-      padding:16px 26px;
+    .socials a{
+      width:58px;
+      height:58px;
       border-radius:18px;
-      font-size:16px;
+      background:#f2f2f2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      transition:.3s;
+      border:1px solid #e8e8e8;
+    }
+
+    .socials a:hover{
+      background:#00c8ff;
+      color:white;
+      transform:translateY(-4px);
+    }
+
+    /* MENU */
+
+    .menu-tabs{
+      display:flex;
+      gap:12px;
+      overflow:auto;
+      margin-bottom:24px;
+      padding-bottom:4px;
+    }
+
+    .menu-tabs a{
+      background:#f3f3f3;
+      padding:14px 20px;
+      border-radius:18px;
+      white-space:nowrap;
+      font-size:14px;
+      font-weight:600;
+      transition:.3s;
+      border:1px solid #ececec;
+    }
+
+    .menu-tabs a:hover{
+      background:#00c8ff;
+      color:white;
+    }
+
+    /* CONTENT */
+
+    .content-box{
+      background:white;
+      border-radius:24px;
+      padding:24px;
+      margin-bottom:22px;
+      border:1px solid #ececec;
+      box-shadow:0 8px 20px rgba(0,0,0,.04);
+    }
+
+    .content-box h2{
+      margin-bottom:18px;
+      font-size:25px;
+      color:#111;
+    }
+
+    .content-box p{
+      line-height:1.9;
+      color:#444;
+    }
+
+    ul{
+      padding-left:20px;
+      line-height:2;
+      color:#444;
+    }
+
+    /* FASILITAS */
+
+    .facility-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+      gap:16px;
+      margin-top:20px;
+    }
+
+    .facility{
+      background:#fafafa;
+      border-radius:22px;
+      padding:24px 14px;
+      text-align:center;
+      border:1px solid #ededed;
+      transition:.3s;
+    }
+
+    .facility:hover{
+      background:#00c8ff;
+      color:white;
+      transform:translateY(-5px);
+    }
+
+    .facility i{
+      font-size:32px;
+      margin-bottom:12px;
+    }
+
+    .facility h4{
+      font-size:14px;
+      font-weight:600;
+    }
+
+    /* FLOATING BUTTON */
+
+    .floating-ticket-btn{
+      position:fixed;
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:9999;
+
+      background:linear-gradient(135deg,#00c8ff,#0099ff);
+      color:white;
+
+      padding:16px 28px;
+      border-radius:999px;
+
       font-weight:700;
-      cursor:pointer;
-      transition:0.25s ease;
-      background:#cdd7ff;
-      color:#fff;
-      pointer-events:none;
+      font-size:16px;
+
+      display:flex;
+      align-items:center;
+      gap:10px;
+
+      box-shadow:
+      0 10px 25px rgba(0,0,0,.15),
+      0 5px 10px rgba(0,200,255,.35);
+
+      transition:.3s;
+      animation:floatButton 2s ease-in-out infinite;
     }
 
-    .buy-btn.active{
-      background:#356dff;
-      pointer-events:auto;
-      box-shadow:0 8px 22px rgba(53,109,255,0.35);
+    .floating-ticket-btn:hover{
+      transform:translateX(-50%) scale(1.05);
     }
 
-    .buy-btn.active:hover{
-      transform:translateY(-2px);
+    .floating-ticket-btn i{
+      font-size:18px;
+    }
+
+    @keyframes floatButton{
+
+      0%{
+        transform:translateX(-50%) translateY(0px);
+      }
+
+      50%{
+        transform:translateX(-50%) translateY(-4px);
+      }
+
+      100%{
+        transform:translateX(-50%) translateY(0px);
+      }
+
+    }
+
+    footer{
+      text-align:center;
+      padding:40px 20px;
+      color:#777;
+      font-size:13px;
     }
 
     @media(max-width:600px){
 
-      .ticket-name{
-        font-size:18px;
+      .main-title h1{
+        font-size:28px;
       }
 
-      .price{
-        font-size:24px;
+      .floating-ticket-btn{
+        width:90%;
+        justify-content:center;
       }
 
-      .checkout-content{
-        flex-direction:column;
-        align-items:stretch;
-      }
-
-      .buy-btn{
-        width:100%;
-      }
-
-      .checkout-text{
-        text-align:center;
-      }
     }
 
   </style>
 </head>
-
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- BANNER -->
-    <div class="banner">
-      <img src="banner.png" alt="Banner Event">
-    </div>
-
-    <!-- TITLE -->
-    <div class="section-title">
-      Kategori Tiket
-    </div>
-
-    <!-- TICKET GRID -->
-    <div class="ticket-grid">
-
-      <!-- CARD 1 SOLD OUT -->
-      <div class="ticket-card">
-
-        <div class="ticket-top">
-          <div class="ticket-name">
-            TIKET 150 : Festival
-          </div>
-
-          <div class="badge soldout">
-            SOLD OUT
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="ticket-bottom">
-
-          <div class="price">
-            Rp. 325.000
-          </div>
-
-          <!-- BUTTON SOLD OUT -->
-          <button class="choose-btn soldout" disabled>
-            FULL BOOKED
-          </button>
-
-        </div>
-      </div>
-
-      <!-- CARD 2 -->
-      <div class="ticket-card">
-
-        <div class="ticket-top">
-          <div class="ticket-name">
-            150 TIKET : Premium
-          </div>
-
-          <div class="badge">
-            ON SALE
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="ticket-bottom">
-
-          <div class="price">
-            Rp. 475000
-          </div>
-
-          <button class="choose-btn" onclick="selectTicket(this, 475000)">
-            Pilih Tiket
-          </button>
-
-          <div class="quantity-box">
-            <button class="qty-btn" onclick="changeQty(this, -1, 475000)">-</button>
-            <div class="qty-number">1</div>
-            <button class="qty-btn" onclick="changeQty(this, 1, 475000)">+</button>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- CARD 3 -->
-      <div class="ticket-card">
-
-        <div class="ticket-top">
-          <div class="ticket-name">
-            150 TIKET : Fast Track
-          </div>
-
-          <div class="badge">
-            ON SALE
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="ticket-bottom">
-
-          <div class="price">
-            Rp. 650000
-          </div>
-
-          <button class="choose-btn" onclick="selectTicket(this, 650000)">
-            Pilih Tiket
-          </button>
-
-          <div class="quantity-box">
-            <button class="qty-btn" onclick="changeQty(this, -1, 650000)">-</button>
-            <div class="qty-number">1</div>
-            <button class="qty-btn" onclick="changeQty(this, 1, 650000)">+</button>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
+  <!-- BANNER -->
+  <div class="banner">
+    <img src="banner-saya.png" alt="Banner Event">
   </div>
 
-  <!-- CHECKOUT BAR -->
-  <div class="checkout-bar">
+  <!-- TITLE -->
+  <div class="main-title">
+    <h1>POLIPONI 2026 <span>- BALI</span></h1>
+  </div>
 
-    <div class="checkout-content">
+  <section>
 
-      <div class="checkout-text">
-        <small>Total Pembayaran</small>
-        <div class="checkout-total" id="totalPrice">
-          Rp. 0
+    <!-- DETAIL -->
+    <div class="card">
+
+      <div class="section-title">
+        DETAIL ACARA
+      </div>
+
+      <div class="detail-item">
+        <i class="fa-solid fa-calendar"></i>
+
+        <div>
+          <h4>Tanggal</h4>
+          <p>04 Juli 2026</p>
         </div>
       </div>
 
-      <button class="buy-btn" id="buyButton">
-        Beli Sekarang
-      </button>
+      <div class="detail-item">
+        <i class="fa-solid fa-clock"></i>
+
+        <div>
+          <h4>Jam</h4>
+          <p>14.00 - 23.00 WITA</p>
+        </div>
+      </div>
+
+      <div class="detail-item">
+        <i class="fa-solid fa-location-dot"></i>
+
+        <div>
+          <h4>Lokasi</h4>
+          <p>BALI UNITED TRAINING CENTER</p>
+        </div>
+      </div>
 
     </div>
 
-  </div>
+    <!-- PENYELENGGARA -->
+    <div class="card">
 
-  <script>
+      <div class="section-title">
+        PENYELENGGARA
+      </div>
 
-    let total = 0;
+      <div class="organizer">
 
-    function formatRupiah(number){
-      return 'Rp. ' + number.toLocaleString('id-ID');
-    }
+        <div class="organizer-logo">
+          AL
+        </div>
 
-    function updateTotal(){
-      document.getElementById('totalPrice').innerText = formatRupiah(total);
+        <div>
+          <h3>PT. AMAZING LETRALIVE</h3>
+        </div>
 
-      const buyButton = document.getElementById('buyButton');
+      </div>
 
-      if(total > 0){
-        buyButton.classList.add('active');
+    </div>
 
-        buyButton.onclick = function(){
-          window.location.href = 'https://poliponii2026.github.io/FORM-POLIPONI/';
-        }
+    <!-- SOSMED -->
+    <div class="card">
 
-      }else{
-        buyButton.classList.remove('active');
-      }
-    }
+      <div class="section-title">
+        MEDIA SOSIAL
+      </div>
 
-    function selectTicket(button, price){
+      <div class="socials">
 
-      const quantityBox = button.nextElementSibling;
+        <a href="#">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
 
-      button.style.display = 'none';
-      quantityBox.style.display = 'flex';
+        <a href="#">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
 
-      total += price;
+      </div>
 
-      updateTotal();
-    }
+    </div>
 
-    function changeQty(button, change, price){
+    <!-- MENU -->
+    <div class="menu-tabs">
 
-      const qtyElement = button.parentElement.querySelector('.qty-number');
+      <a href="#deskripsi">
+        DESKRIPSI
+      </a>
 
-      let qty = parseInt(qtyElement.innerText);
+      <a href="#syarat">
+        SYARAT & KETENTUAN
+      </a>
 
-      qty += change;
+      <a href="#fasilitas">
+        FASILITAS
+      </a>
 
-      if(qty <= 0){
+    </div>
 
-        qty = 0;
+    <!-- DESKRIPSI -->
+    <div class="content-box" id="deskripsi">
 
-        const quantityBox = button.parentElement;
-        const chooseButton = quantityBox.previousElementSibling;
+      <h2>DESKRIPSI</h2>
 
-        quantityBox.style.display = 'none';
-        chooseButton.style.display = 'block';
+      <p>
+        POLIPONI 2026 hadir sebagai festival musik spektakuler di Bali
+        dengan menghadirkan line-up terbaik Indonesia seperti Sheila On 7,
+        Hindia, Feast, 510, dan Dialog Dini Hari.
+      </p>
 
-      }
+      <br>
 
-      qtyElement.innerText = qty;
+      <p>
+        Acara ini akan berlangsung di Bali United Training Center pada
+        tanggal 04 Juli 2026 mulai pukul 14.00 WITA hingga selesai.
+        Nikmati konser megah dengan tata panggung modern, lighting spektakuler,
+        area kuliner, merchandise official, dan berbagai aktivitas menarik.
+      </p>
 
-      total += (change * price);
+      <br>
 
-      if(total < 0){
-        total = 0;
-      }
+      <p>
+        Jangan lewatkan pengalaman konser terbaik bersama ribuan penonton
+        lainnya di POLIPONI 2026 - BALI.
+      </p>
 
-      updateTotal();
-    }
+    </div>
 
-  </script>
+    <!-- SYARAT -->
+    <div class="content-box" id="syarat">
+
+      <h2>SYARAT & KETENTUAN</h2>
+
+      <ul>
+
+        <li>Tiket yang sudah dibeli tidak dapat dikembalikan.</li>
+
+        <li>Wajib menunjukkan e-ticket saat penukaran tiket.</li>
+
+        <li>Dilarang membawa senjata tajam, narkoba, dan minuman keras.</li>
+
+        <li>Dilarang membawa makanan dan minuman dari luar venue.</li>
+
+        <li>Tiket hanya berlaku untuk 1 orang.</li>
+
+        <li>Pihak penyelenggara berhak menolak pengunjung yang melanggar aturan.</li>
+
+        <li>Pengunjung wajib menjaga keamanan dan ketertiban acara.</li>
+
+        <li>Acara dapat berubah sewaktu-waktu sesuai kondisi.</li>
+
+      </ul>
+
+    </div>
+
+    <!-- FASILITAS -->
+    <div class="content-box" id="fasilitas">
+
+      <h2>FASILITAS</h2>
+
+      <div class="facility-grid">
+
+        <div class="facility">
+          <i class="fa-solid fa-toilet"></i>
+          <h4>Toilet</h4>
+        </div>
+
+        <div class="facility">
+          <i class="fa-solid fa-burger"></i>
+          <h4>Food Court</h4>
+        </div>
+
+        <div class="facility">
+          <i class="fa-solid fa-shirt"></i>
+          <h4>Merchandise</h4>
+        </div>
+
+        <div class="facility">
+          <i class="fa-solid fa-square-parking"></i>
+          <h4>Parking</h4>
+        </div>
+
+        <div class="facility">
+          <i class="fa-solid fa-kit-medical"></i>
+          <h4>Medical</h4>
+        </div>
+
+        <div class="facility">
+          <i class="fa-solid fa-camera"></i>
+          <h4>Photo Spot</h4>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 POLIPONI BALI • Powered by PT. AMAZING LETRALIVE
+  </footer>
+
+</div>
+
+<!-- FLOATING BUTTON -->
+
+<a href="https://poliponii2026.github.io/CATEGORY-POLIPONI/"
+target="_blank"
+class="floating-ticket-btn">
+
+<i class="fa-solid fa-ticket"></i>
+BELI TIKET
+
+</a>
 
 </body>
 </html>
